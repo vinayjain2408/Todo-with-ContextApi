@@ -1,0 +1,29 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.head{
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 2rem;
+    align-items: center;
+    color: #fff;
+    background-color: #000000e4;
+}
+.list{
+    display: flex;
+}
+.list li{
+    list-style-type: none;
+    padding: 1rem;
+}
+.list li a{
+    text-decoration: none;
+    color: #fff;
+}
+.color-sheet{
+    position: absolute;
+    top: 3rem;
+    right: 6rem;
+}

@@ -1,0 +1,102 @@
+.new-tabe button {
+    margin: 5px 20px;
+    font-size: 20px;
+    padding: 5px;
+    border-radius: 10px;
+}
+
+.task-body {
+    height: 100vh;
+     background: #2c2b2bf7;
+}
+
+.inp-box {
+    border: 1px solid;
+    border-radius: 15px;
+    height: 134px;
+    width: 303px;
+    margin: 20px;
+    padding: 5px;
+    position: absolute;
+    z-index: 99;
+    background:#0c0b0bf7;
+    /* background: #2c2b2bf7; */
+    top: 105px;
+}
+
+.inp-box p {
+    text-align: center;
+    color: #fff;
+}
+
+.inp-box button {
+    margin: 2px 6px;
+    font-size: 15px;
+    padding: 8px 34px;
+    border-radius: 10px;
+    border: 1px solid black;
+}
+
+.inp-box button:last-child {
+    background-color: green;
+    color: #fff;
+}
+
+.inp-box input {
+    padding: 10px 57px 10px 14px;
+    font-size: 16px;
+    margin: 10px 8px 5px;
+    border-radius: 10px;
+    border: 1px solid;
+}
+
+.multilist {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.box-list h3 {
+    /* margin-left: 55px; */
+    text-align: center;
+    
+}
+.box-list {
+    position: relative;
+}
+
+.box-task {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    height: 150px;
+    width: 150px;
+    background-color: #fff;
+    
+}
+.box-list h3{
+    color: #fff;
+}
+.icons{
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    /* z-index: 9; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 125px;
+}
+.icons input{
+    height: 20px;
+    width: 20px;
+}
+
+.icons button{
+    border: none;
+    color: rgb(0, 47, 255);
+}
+.icons button .MuiSvgIcon-root{
+    font-size: 30px;
+}
