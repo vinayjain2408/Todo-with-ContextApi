@@ -6,14 +6,14 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { MyContext } from "./Context/Mycontext";
 
 function App() {
-  const [buttonValue, setButtonValue] = useState(false); // Corrected variable name
+  const [buttonValue, setButtonValue] = useState(false);
   const [inputDetail, setInputDetail] = useState("");
   const [inputValue, setInputValue] = useState("");
-  const [array, setArray] = useState([]); // Corrected variable name
+  const [array, setArray] = useState([]); 
 
   const handleCreate = () => {
-    if (inputValue.trim() !== "") { // Check if input has non-space characters
-      setButtonValue(false); // Corrected function name
+    if (inputValue.trim() !== "") { 
+      setButtonValue(false); 
       setArray((prevArray) => [
         ...prevArray,
         {
@@ -27,7 +27,7 @@ function App() {
       ]);
       setInputValue("");
     }
-    console.log("todo", array); // Corrected variable name
+    console.log("todo", array); 
   };
 
   const handleInputKeyPress = (e) => {
@@ -69,7 +69,7 @@ function App() {
         });
       });
       setInputDetail("");
-      console.log("todo", array); // Corrected variable name
+      console.log("todo", array);
     }
   };
 
@@ -77,11 +77,10 @@ function App() {
     <MyContext.Provider
       value={{
         handleCreate,
-        inputValue, // Corrected variable name
-        buttonValue, // Corrected variable name
-        setButtonValue, // Corrected function name
-        array, // Corrected variable name
-        setArray, // Corrected function name
+        inputValue,
+        setButtonValue,
+        array, 
+        setArray, 
         setInputValue,
         handleInputKeyPress,
         inputDetail,
