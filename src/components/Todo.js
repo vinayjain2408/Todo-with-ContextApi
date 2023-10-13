@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useContext, useState } from "react";
 import "./Todo.css";
 import { useNavigate } from "react-router-dom";
 import DeleteIcon from "@mui/icons-material/Delete";
@@ -12,31 +12,18 @@ function Todo() {
     setButtonValue,
     array,
     setInputValue,
-    setArray,currectColor
+    currentColor,
+    setArray,
   } = useContext(MyContext);
-  const appStyle = {
-    backgroundColor: currectColor,
-  };
-  //   const [buttonValue, setbuttonvalue] = useState(false);
-  //   const [inputvalue, setInputValue] = useState("");
+
   const navigate = useNavigate();
   const [isChecked, setIsChecked] = useState([]);
-  //   const [arry, setArry] = useState(
-  //     localStorage.getItem("arry") === null
-  //       ? []
-  //       : JSON.parse(localStorage.getItem("arry"))
-  //   );
-  // const [arry, setArry] = useState([])
-
-  //   useEffect(() => {
-  //     localStorage.setItem("arry", JSON.stringify(arry));
-  //   }, [arry]);
 
   const handleButton = () => {
     setButtonValue(true);
   };
 
-  const handleinputChange = (e) => {
+  const handleInput = (e) => {
     setInputValue(e.target.value);
   };
 
@@ -44,27 +31,8 @@ function Todo() {
     setButtonValue(false);
   };
 
-  //   const handleCreate = () => {
-  //     if (inputvalue.length > 0) {
-  //       setbuttonvalue(false);
-  //       setArry([
-  //         ...arry,
-  //         {
-  //           name: inputvalue,
-  //           id:arry.length+1,
-  //           receivedData: {
-  //             id:arry.length+1,
-  //             additionalData: [],
-  //           },
-  //         },
-  //       ]);
-  //       console.log(arry, "todo array");
-  //     }
-  //     setInputValue("");
-  //   };
-
-  const handlepath = (index) => {
-    navigate(`/list-detail/`);
+  const handlePath = (index) => {
+    navigate(`/list-detail/${index}`);
   };
 
   const toggleCheck = (index) => {
@@ -74,16 +42,16 @@ function Todo() {
   };
 
   const deleteTask = (index) => {
-    const updatedArry = [...array];
-    updatedArry.splice(index, 1);
-    setArray(updatedArry);
+    const updatedArray = [...array];
+    updatedArray.splice(index, 1);
+    setArray(updatedArray);
     const updatedIsChecked = [...isChecked];
     updatedIsChecked.splice(index, 1);
     setIsChecked(updatedIsChecked);
   };
 
   return (
-    <div className="task-body" style={appStyle}>
+    <div className="task-body" style={{ backgroundColor: currentColor }}>
       <div>
         <div className="new-tabe">
           <button onClick={handleButton}>New List</button>
@@ -96,7 +64,7 @@ function Todo() {
                 type="text"
                 placeholder="Enter Task"
                 value={inputValue}
-                onChange={handleinputChange}
+                onChange={handleInput}
               />
               <button type="submit" onClick={handleCancel}>
                 Cancel
@@ -128,9 +96,22 @@ function Todo() {
                   ""
                 )}
               </div>
-              <div className="box-task" onClick={handlepath}>
+              {/* <div className="box-task" onClick={() => handlePath(index)}>
                 <p>No task</p>
+              </div> */}
+
+              <div className="box-task" onClick={() => handlePath(index)}>
+                <p>
+                  {array.receivedData &&
+                  array.receivedData.additionalData &&
+                  array.receivedData.additionalData.length > 0
+                    ? array.receivedData.additionalData.map((name) => {
+                        return <p key={name.name}>{name.name}</p>;
+                      })
+                    : "No task"}
+                </p>
               </div>
+
               <h3>{item.name}</h3>
             </div>
           );
@@ -141,3 +122,4 @@ function Todo() {
 }
 
 export default Todo;
+
