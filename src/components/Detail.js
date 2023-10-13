@@ -8,7 +8,7 @@ import "./Detail.css";
 import { MyContext } from "../Context/Mycontext";
 
 function Detail() {
-  const { inputDetail, setInputDetail, handleInputKeyPress, array } =
+  const { inputDetail, setInputDetail, handleInputKeyPress, array,currectColor } =
     useContext(MyContext);
   // const [inputValue, setInputValue] = useState("");
   const [inputList, setInputList] = useState([]);
@@ -21,7 +21,9 @@ function Detail() {
   //   useEffect(() => {
   //     localStorage.setItem("inputList", JSON.stringify(inputList));
   //   }, [inputList]);
-
+  const appStyle = {
+    backgroundColor: currectColor,
+  };
 
 
   const handleInput = (e) => {
@@ -29,10 +31,12 @@ function Detail() {
   };
 
   return (
-    <div className="Detail-page">
+    <div className="Detail-page"  style={appStyle}>
       <div className="boxex">
         {array.length > 0 &&
           array.map((item, index) =>
+          // {array.receivedData.additionalData.length > 0 &&
+          //   array.receivedData.additionalData.map((item, index) =>
             item.receivedData && item.receivedData.additionalData.length > 0
               ? item.receivedData.additionalData.map((inp, index) => {
                   return (

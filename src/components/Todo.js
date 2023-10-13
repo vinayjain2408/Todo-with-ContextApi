@@ -7,13 +7,16 @@ import { MyContext } from "../Context/Mycontext";
 function Todo() {
   const {
     handleCreate,
-        inputValue, // Corrected variable name
-        buttonValue, // Corrected variable name
-        setButtonValue, // Corrected function name
-        array, // Corrected variable name
-        setInputValue,
-        setArray
+    inputValue,
+    buttonValue,
+    setButtonValue,
+    array,
+    setInputValue,
+    setArray,currectColor
   } = useContext(MyContext);
+  const appStyle = {
+    backgroundColor: currectColor,
+  };
   //   const [buttonValue, setbuttonvalue] = useState(false);
   //   const [inputvalue, setInputValue] = useState("");
   const navigate = useNavigate();
@@ -25,9 +28,9 @@ function Todo() {
   //   );
   // const [arry, setArry] = useState([])
 
-//   useEffect(() => {
-//     localStorage.setItem("arry", JSON.stringify(arry));
-//   }, [arry]);
+  //   useEffect(() => {
+  //     localStorage.setItem("arry", JSON.stringify(arry));
+  //   }, [arry]);
 
   const handleButton = () => {
     setButtonValue(true);
@@ -80,7 +83,7 @@ function Todo() {
   };
 
   return (
-    <div className="task-body">
+    <div className="task-body" style={appStyle}>
       <div>
         <div className="new-tabe">
           <button onClick={handleButton}>New List</button>

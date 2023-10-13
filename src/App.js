@@ -10,10 +10,16 @@ function App() {
   const [inputDetail, setInputDetail] = useState("");
   const [inputValue, setInputValue] = useState("");
   const [array, setArray] = useState([]); 
+  const [ currectColor , setCurrentcolor] = useState("#191818")
 
+
+  const handleChangeComplete = (color) => {
+    setCurrentcolor(color.hex)
+    console.log(color)
+    console.log(color.hex)
+  };
   const handleCreate = () => {
     if (inputValue.trim() !== "") { 
-      setButtonValue(false); 
       setArray((prevArray) => [
         ...prevArray,
         {
@@ -26,9 +32,10 @@ function App() {
         },
       ]);
       setInputValue("");
+      setButtonValue(false); 
     }
-    console.log("todo", array); 
   };
+  console.log("todo", array); 
 
   const handleInputKeyPress = (e) => {
     if (e.key === "Enter" && inputDetail.trim() !== "") {
@@ -38,8 +45,6 @@ function App() {
             const listIndex = prevArray.findIndex(
               (list) => list.id === item.receivedData.id
             );
-            console.log(listIndex)
-
             console.log(listIndex, "kk");
             if (listIndex !== -1) {
               const updatedReceivedData = {
@@ -51,7 +56,7 @@ function App() {
                   })),
                   {
                     ParentID: item.receivedData.id,
-                    child_id: item.receivedData.additionalData.length + 1,
+                    child_id: item[listIndex].receivedData.additionalData.length + 1,
                     name: inputDetail,
                   },
                 ],
@@ -75,7 +80,7 @@ function App() {
 
   return (
     <MyContext.Provider
-      value={{
+        value={{
         handleCreate,
         inputValue,
         setButtonValue,
@@ -85,6 +90,10 @@ function App() {
         handleInputKeyPress,
         inputDetail,
         setInputDetail,
+        buttonValue,
+        handleChangeComplete ,
+        currectColor ,
+         setCurrentcolor
       }}
     >
       <BrowserRouter>
